@@ -21,7 +21,3 @@ non-void chops(mp3 library)
 
 GAME RULES:
 The objective of the game is to correctly guess the artist and song title of a music clip within 30 seconds. You receive 1 point for guessing the correct artist and 1 point for the correct song title. After 30 seconds, the song will end, and you will type in your guess. Your points will be awarded accordingly based off the accuracy of your guess. The next music clip will be played and, the process will continue repeating. 
-
-
-  
-  
