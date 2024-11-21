@@ -19,5 +19,38 @@ non-void chops(mp3 library)
 - takes 30sec snippet from middle of the song
 - returns snipet
 
-GAME RULES:
-The objective of the game is to correctly guess the artist and song title of a music clip within 30 seconds. You receive 1 point for guessing the correct artist and 1 point for the correct song title. After 30 seconds, the song will end, and you will type in your guess. Your points will be awarded accordingly based off the accuracy of your guess. The next music clip will be played and, the process will continue repeating. 
+
+def display_game_menu():
+    """
+    Display the game menu.
+    """
+    print("Welcome to the 30-Second Music Trivia Game!")
+    print("Please select an option:")
+    print("1. Display Game Rules")
+    print("2. Play Game")
+    print("3. Exit")
+
+    choice = input("Enter your choice (1/2/3): ")
+
+    if choice == '1':
+        display_game_rules()
+    elif choice == '2':
+        print("Starting the game... (This is where the game logic would go)")
+        # Add game logic here
+    elif choice == '3':
+        print("Exiting the game. Goodbye!")
+    else:
+        print("Invalid choice. Please select a valid option.")
+
+def display_game_rules():
+    """
+    Display the game rules.
+    """
+    print("\nGame Rules:")
+    print("The objective of the game is to correctly guess the artist and song title of a music clip within 30 seconds.")
+    print("You will receive 1 point for guessing the correct artist and 1 point for the correct song title.")
+    print("After 30 seconds, the song will end, and you will type in your guess.")
+    print("Your points will be awarded accordingly based on the accuracy of your guess.")
+    print("The next music clip will be played, and the process will continue repeating.\n")
+    
+
