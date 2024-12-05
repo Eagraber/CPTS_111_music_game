@@ -19,15 +19,19 @@ def choose_random_file(void):
     # Randomly select a file from the list
     random_file = random.choice(files)
     return random_file
-
+def play_music(file):
+    '''Plays the music file'''
+    pygame.mixer.init()
+    pygame.mixer.music.load(file)
+    pygame.mixer.music.play()
+    # Wait for the music to finish playing
+    while pygame.mixer.music.get_busy():
+        pygame.time.Clock().tick(10)
+    pygame.mixer.quit()
+    return
 def main():
     #sets up directory to the correct place
     random_file = choose_random_file
     print(f"Randomly selected file: {random_file}")
-    pygame.mixer.init()
-    # Implement the file
-    #with open("mp3_lib", 'r') as file_in:
-        #pass  # Add code here to process the file if needed
-    # Load an MP3 file
-    #pygame.mixer.music.load('C:/Users/ellie/Desktop/sandbox_111/vscode/Music_trivia/mp3_file/')
+
 main()
