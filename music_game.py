@@ -1,16 +1,12 @@
 import os
 import random
 import pygame
-#get the mp3 in the files current dir C:\Users\ellie\Desktop\sandbox_111\vscode\Music_trivia
 
-
-#print(os.getcwd())
-# Initialize the mixer module
-#pass in the directory
 def choose_random_file(directory):
     '''Chooses a random file from directory'''
-    #changes directory and lists files
+    # List all files in the given directory
     files = os.listdir(directory)
+    
     # Filter out directories, only keep files
     files = [f for f in files if os.path.isfile(os.path.join(directory, f))]
     
@@ -18,6 +14,7 @@ def choose_random_file(directory):
     random_file = random.choice(files)
     print(f"Selected file: {random_file}")
     return os.path.join(directory, random_file)
+
 def play_music(random_file):
     '''Plays the music file'''
     pygame.mixer.init()
@@ -28,10 +25,12 @@ def play_music(random_file):
         pygame.time.Clock().tick(10)
     pygame.mixer.quit()
     return
+
 def main():
-    #sets up directory to the correct place
-    random_file = choose_random_file("C://Users//ellie//Desktop//sandbox_111//vscode//Music_trivia//mp3_lib")
+    # Set up directory to the correct place
+    script_dir = os.path.dirname(__file__)
+    mp3_dir = os.path.join(script_dir, "mp3_lib")
+    random_file = choose_random_file(mp3_dir)
     print(f"Randomly selected file: {random_file}")
     play_music(random_file)
-
 main()
