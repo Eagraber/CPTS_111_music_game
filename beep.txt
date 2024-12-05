@@ -1,0 +1,15 @@
+pip install pygame
+import pygame
+
+# Initialize the mixer module
+pygame.mixer.init()
+
+# Load an MP3 file
+pygame.mixer.music.load('/path/to/your/file.mp3')
+
+# Play the MP3 file
+pygame.mixer.music.play()
+
+# Keep the program running until the music stops
+while pygame.mixer.music.get_busy():
+    pygame.time.Clock().tick(10)
