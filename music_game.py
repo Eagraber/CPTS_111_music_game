@@ -1,7 +1,6 @@
 import os
 import random
 import pygame
-import shlex
 def choose_random_file(directory):
     '''Chooses a random file from directory'''
     # List all files in the given directory
@@ -21,7 +20,6 @@ def stuff(random_file):
      files= os.listdir(random_file)
      for file in files:
         selection = os.path.join(random_file, file)
-        selection =shlex.quote(selection)
      return selection
 def play_music(random_file):
     '''Plays the music file'''
@@ -42,5 +40,6 @@ def main():
     random_file = choose_random_file(mp3_dir)
     print(f"Randomly selected file: {random_file}")
     random_mp3=stuff(random_file)
-    play_music(random_mp3)
+    song=stuff(random_mp3)
+    play_music(song)
 main()
