@@ -3,13 +3,14 @@ import random
 import pygame
 #get the mp3 in the files current dir C:\Users\ellie\Desktop\sandbox_111\vscode\Music_trivia
 
-directory= os.chdir("C:/Users/ellie/Desktop/sandbox_111/vscode/Music_trivia/mp3_lib")
+
 #print(os.getcwd())
 # Initialize the mixer module
 #pass in the directory
 def choose_random_file(directory):
     '''Chooses a random  file from directory and then converts it back to a directory'''
-    # List all files in the given directory
+    #changes directory and lists files
+    directory= os.chdir("C:/Users/ellie/Desktop/sandbox_111/vscode/Music_trivia/mp3_lib")
     files = os.listdir(directory)
     
     # Filter out directories, only keep files
@@ -18,7 +19,7 @@ def choose_random_file(directory):
     # Randomly select a file from the list
     random_file = random.choice(files)
 
-    print(f"{random_file}");
+    print(f"{random_file}")
     return random_file
 
 # Example usage
