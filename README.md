@@ -39,7 +39,7 @@ def display_game_menu():
         # Add game logic here
     elif choice == '3':
         print("Exiting the game. Goodbye!")
-    else:
+    else: 
         print("Invalid choice. Please select a valid option.")
 
 def display_game_rules():
