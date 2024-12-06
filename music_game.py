@@ -98,6 +98,7 @@ def check_answer(artistg,songg,random_file):
     return score
 
 def main():
+    '''Main function that runs the game'''
     # Set up directory to the correct place
     os.chdir("mp3_lib")#changes the directory to the mp3_lib
     script_dir = os.path.dirname(__file__)#gets the directory of the file
