@@ -9,7 +9,7 @@ def choose_random_file(directory):
     # Filter out directories, only keep files
     f = []
     for f in files:
-        if os.path.isfile(os.path.join(directory, f)):
+        if os.path.isfile(os.path.join(directory, f)):#checks if the file is a file
             files.append(f)
     
     # Randomly select a file from the list
@@ -20,7 +20,7 @@ def directory_config(random_file):
     '''Configures the directory to the correct file path'''
     files= os.listdir(random_file)
     for file in files:
-       selection = os.path.join(random_file, file)
+       selection = os.path.join(random_file, file)#joins the directory with the file
     return selection
 def play_music(random_file):
     '''Plays the music file'''
@@ -99,9 +99,9 @@ def check_answer(artistg,songg,random_file):
 
 def main():
     # Set up directory to the correct place
-    os.chdir("mp3_lib")
-    script_dir = os.path.dirname(__file__)
-    mp3_dir = os.path.join(script_dir, "mp3_lib")
+    os.chdir("mp3_lib")#changes the directory to the mp3_lib
+    script_dir = os.path.dirname(__file__)#gets the directory of the file
+    mp3_dir = os.path.join(script_dir, "mp3_lib")#joins the directory of the file with the mp3_lib
     #score accumulator
     score_total=0
     #display game menu
