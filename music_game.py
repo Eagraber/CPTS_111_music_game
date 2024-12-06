@@ -62,19 +62,28 @@ def questions():
     artistg = input("Enter the artist name: ")
     songg = input("Enter the song name: ")
     return artistg,songg
-def check_answer(artistg,songg,random_file,score):
+def check_answer(artistg,songg,random_file):
     ''' 
     The answer matches the file structure.Makes artistg and songg lowercase.
     Extract file name from file path and remove underscores and makes it lower case assigning it to artist and song.
     Then runs comparison to see if artistg is the same as artist and songg is the same as song 
     then allocates point to score if they match.
     '''
+    score=0
     artistg=artistg.lower()
     songg=songg.lower()
-    artist = random_file.split("\\")[-2].split("_")#changed index for file path format
-    artist=artist[len(artist)].lower()#changed for read ability and to make sure the whole length of the name is allocated
-    song = random_file.split("\\")[-1].split("_")
-    song=song[len(song)].lower()#changed for read ability and to make sure the whole length of the name is allocated
+    artist_split = random_file.split("\\")[-3].split("_")#changed index for file path format
+    if len(artist_split) > 1:#if the artist has more than one word joins them into one string then lowers
+        artist=' '.join(artist_split)
+        artist=artist.lower()#changed for read ability
+    else:#if the artist is one word just lowers the string
+        artist=artist_split[-1].lower()
+    song_split = random_file.split("\\")[-2].split("_")#changed index for file path format
+    if len(song_split) > 1:#if the song has more than one word joins them into one string then lowers
+        song=' '.join(song_split)
+        song= song.lower()#changed for read ability
+    else:#if the song is one word just lowers the string
+        song=song_split[-1].lower()
     if artistg == artist:#checks that they match allocates one point
         score += 1
         print("Artist is correct")
@@ -93,11 +102,10 @@ def main():
     script_dir = os.path.dirname(__file__)
     mp3_dir = os.path.join(script_dir, "mp3_lib")
     #score accumulator
-    score=0
+    score_total=0
     #display game menu
     display_game_menu()
-    for i in range(4):
-        os.system("cls")#clears the screen per song
+    for i in range(5):
         print(f"Song {i+1}!")#prints the song number +1 because index is 0
         artistg=""#initialise players artist guess so the list can be checked per song
         songg=""#intaialise players song guess so the list can be checked per song
@@ -106,10 +114,9 @@ def main():
         song=directory_config(random_mp3)#configures the directory to the correct file path for mp3
         play_music(song)#plays the mp3 file
         artistg,songg=questions()#asks user input for artist and song
-        score += check_answer(artistg,songg,random_mp3,score)#checks and allocates points
+        score_total+= check_answer(artistg,songg,song)#checks and allocates points   
         
-        
-    print(f"Here is your score: {score}")#prints score
+    print(f"Here is your score: {score_total}")#prints score
     print("Great Job!")#prints great job
     print("")
     display_game_menu()
