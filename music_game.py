@@ -71,14 +71,14 @@ def check_answer(artistg,songg,random_file,score):
     '''
     artistg=artistg.lower()
     songg=songg.lower()
-    artist = random_file.split("\\")[-2].split("_")[0].lower()#changed for file format
-    song = random_file.split("\\")[-1].split("_")[0].lower()#changed for file structure
-    if artistg == artist:
+    artist = random_file.split("\\")[-2].split("_")[0].lower()#changed index for file path format
+    song = random_file.split("\\")[-1].split("_")[0].lower()#changed for file structure and index to 0 to ensure the whole song name is recorded
+    if artistg == artist:#checks that they match allocates one point
         score += 1
         print("Artist is correct")
     else:
         print("Artist is incorrect")
-    if songg == song:
+    if songg == song:#checks that they match allocates one point
         score += 1
         print("Song is correct")
     else:
@@ -94,14 +94,21 @@ def main():
     score=0
     #display game menu
     display_game_menu()
-    for i in range(5):
-        random_file = choose_random_file(mp3_dir)
-        random_mp3=directory_config(random_file)
-        song=directory_config(random_mp3)
-        play_music(song)
-        artistg,songg=questions()
-        score= check_answer(artistg,songg,random_mp3,score)
-        os.system("cls")
-    print(f"Here is your score: {score}")
-    print("Great Job!")
+    for i in range(4):
+        artistg=""#initialise players artist guess so the list can be checked per song
+        songg=""#intaialise players song guess so the list can be checked per song
+        random_file = choose_random_file(mp3_dir)# generates a random artist
+        random_mp3=directory_config(random_file)#configures the directory to the correct file path
+        song=directory_config(random_mp3)#configures the directory to the correct file path for mp3
+        play_music(song)#plays the mp3 file
+        artistg,songg=questions()#asks user input for artist and song
+        score += check_answer(artistg,songg,random_mp3,score)#checks and allocates points
+        print("")
+        os.system("cls")#clears the screen for the next song
+        print(f"Song {i}!")#prints the song number
+    print(f"Here is your score: {score}")#prints score
+    print("Great Job!")#prints great job
+    print("")
+    os.system("cls")#clears the screen
+    display_game_menu()
 main()
