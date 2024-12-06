@@ -24,13 +24,13 @@ def directory_config(random_file):
     return selection
 def play_music(random_file):
     '''Plays the music file'''
-    pygame.mixer.init()
-    pygame.mixer.music.load(random_file)
-    pygame.mixer.music.play()
+    pygame.mixer.init()#initialises the mixer
+    pygame.mixer.music.load(random_file)#loads the music file
+    pygame.mixer.music.play()#plays the music file
     # Wait for the music to finish playing
-    while pygame.mixer.music.get_busy():
-        pygame.time.Clock().tick(10)#10ms
-    pygame.mixer.quit()
+    while pygame.mixer.music.get_busy():#checks if the music is still playing
+        pygame.time.Clock().tick(10)#10 is the quality of the music
+    pygame.mixer.quit()#quits the mixer
     return
 def display_game_menu():
     ''' Displays menu for the game welcoming people to music trivia and giving them the options
@@ -44,7 +44,8 @@ def display_game_menu():
     print("3. Exit")
     choice = input("Enter your choice: ")
     if choice == "1":
-        print("Welcome to Music Trivia. The rules are simple. You will be presented with a song and you will have to guess the artist and the song name.")
+        print("Welcome to Music Trivia. The rules are simple. ")
+        print("You will be presented with a song and you will have to guess the artist and the song name.")
         print("The game will run 5 times and allocate scores 1pt for artist and 1pt for song. Good luck!")#prints correct rules
         display_game_menu()
     elif choice == "2":
@@ -52,7 +53,7 @@ def display_game_menu():
         pass
     elif choice == "3":
         print("Goodbye!")
-        display_game_menu()
+        exit()#exists the program
     else:
         print("Invalid choice. Please try again.Option 1-3.")
         display_game_menu()
