@@ -71,8 +71,10 @@ def check_answer(artistg,songg,random_file,score):
     '''
     artistg=artistg.lower()
     songg=songg.lower()
-    artist = random_file.split("\\")[-2].split("_")[0].lower()#changed index for file path format
-    song = random_file.split("\\")[-1].split("_")[0].lower()#changed for file structure and index to 0 to ensure the whole song name is recorded
+    artist = random_file.split("\\")[-2].split("_")#changed index for file path format
+    artist=artist[len(artist)].lower()#changed for read ability and to make sure the whole length of the name is allocated
+    song = random_file.split("\\")[-1].split("_")
+    song=song[len(song)].lower()#changed for read ability and to make sure the whole length of the name is allocated
     if artistg == artist:#checks that they match allocates one point
         score += 1
         print("Artist is correct")
@@ -95,6 +97,8 @@ def main():
     #display game menu
     display_game_menu()
     for i in range(4):
+        os.system("cls")#clears the screen per song
+        print(f"Song {i+1}!")#prints the song number +1 because index is 0
         artistg=""#initialise players artist guess so the list can be checked per song
         songg=""#intaialise players song guess so the list can be checked per song
         random_file = choose_random_file(mp3_dir)# generates a random artist
@@ -103,12 +107,10 @@ def main():
         play_music(song)#plays the mp3 file
         artistg,songg=questions()#asks user input for artist and song
         score += check_answer(artistg,songg,random_mp3,score)#checks and allocates points
-        print("")
-        os.system("cls")#clears the screen for the next song
-        print(f"Song {i}!")#prints the song number
+        
+        
     print(f"Here is your score: {score}")#prints score
     print("Great Job!")#prints great job
     print("")
-    os.system("cls")#clears the screen
     display_game_menu()
 main()
